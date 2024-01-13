@@ -1,0 +1,384 @@
+#root {
+  max-width: 1280px;
+  height: auto;
+  margin: 0;
+  text-align: center;
+}
+
+body {
+  margin: 0%;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0%;
+}
+
+img {
+  width: 100%;
+}
+
+button {
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: inset 0 0 rgba(0, 0, 0, 0.75),
+    inset 0 -0.1em 0 rgba(0, 0, 0, 0.85), 0 0.25em 0.25em rgba(0, 0, 0, 0.75);
+  background-color: #fd7c7c;
+  color: #030303;
+  font-family: "Poppins";
+  font-size: 1.3rem;
+  font-weight: 300;
+  border: 1px solid rgb(0, 0, 0);
+  padding: 1%;
+}
+
+button:active {
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.75),
+    inset 0 0em 0 rgba(0, 0, 0, 0.85), 0 2px 2px rgba(0, 0, 0, 0.75);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  appearance: none;
+  -moz-appearance: textfield;
+}
+
+.app {
+  height: 100vh;
+}
+
+.bx {
+  text-decoration: none;
+  color: #000000;
+}
+
+.bx-paste {
+  font-size: 4.4rem;
+  padding-top: 6%;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  height: 10em;
+  justify-content: space-between;
+}
+
+.header__list {
+  display: flex;
+  align-items: center;
+  padding: 0%;
+  list-style: none;
+  gap: 5em;
+}
+
+.header__item {
+  text-align: center;
+}
+
+.header__item-text {
+  margin: 0%;
+  font-size: 1rem;
+  height: 25vh;
+}
+
+.header {
+  display: flex;
+  width: 98vw;
+}
+
+.header__logo__container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.header__logo {
+  display: flex;
+  justify-content: space-around;
+  text-decoration: none;
+  width: 20vw;
+  margin: 0%;
+  height: 100%;
+}
+
+.header__list {
+  display: flex;
+  gap: 3rem;
+  justify-content: space-around;
+  align-items: center;
+  width: 50vw;
+}
+
+.home {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.home__container-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5%;
+  height: fit-content;
+  min-height: calc(90vh - 80px);
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  padding-top: 15vh;
+}
+
+.login__container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 21em;
+  height: 50vh;
+  padding: 7%;
+  border: solid 1px;
+  border-radius: 10px;
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+}
+
+.login__title {
+  text-align: center;
+}
+
+.login__div-email {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.login__div-password {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.loader__container {
+  height: calc(90vh - 80px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader__div {
+  width: 10em;
+  height: 10em;
+  background-color: #ffffff;
+  border: 10px solid #d33f3f;
+  border-top: 10px solid #000000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 80px;
+  animation: rotation 1.7s 0.2s infinite cubic-bezier(0.34, 0.66, 1, 0.59);
+}
+
+.article__container {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  min-height: fit-content;
+  min-height: -moz-fit-content;
+  padding-left: 5%;
+}
+
+.article__container-user-info {
+  border-radius: 15px;
+  width: 25%;
+  min-width: fit-content;
+  min-width: -webkit-fill-available;
+  height: fit-content;
+  min-width: -moz-fit-content;
+  background-color: #e0dada;
+  padding: 3%;
+  font-size: 1rem;
+}
+
+.article__container-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6%;
+}
+
+.article_container-btn {
+  display: flex;
+  align-items: center;
+  padding: 2%;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  color: #000000;
+  font-size: 2rem;
+}
+
+.link__active {
+  color: #a52a2a;
+  font-size: 2.1rem;
+}
+
+.article_container-user-div {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5%;
+}
+
+.article__container-main {
+  width: 100vw;
+}
+
+.article__container-user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  margin-bottom: 2%;
+}
+
+.edit__container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  column-gap: 5%;
+}
+
+.edit__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.form__continer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+}
+
+.edit__div {
+  display: flex;
+  justify-content: space-around;
+  gap: 1em;
+}
+
+.product-card {
+  height: fit-content;
+  min-width: 400px;
+  padding: 1%;
+  border: 1px solid #ccc7;
+  border-radius: 2%;
+  margin: 3% 0%;
+}
+
+.product-card:hover {
+  cursor: pointer;
+  transform: scale(1.01);
+  box-shadow: 2px 2px 10px #0003;
+  transform: box-shadow 400ms ease, transform 400ms ease;
+}
+
+.employee__card {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 6em;
+  width: 100vw;
+}
+
+.employee__card-div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 4em;
+  margin: 2%;
+}
+
+.employee__card-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 25%;
+  background-color: #e0dada;
+  padding: 2em;
+  border: 1px solid #ccc7;
+  border-radius: 1em;
+  margin-top: 3%;
+}
+
+.employee__card-container:hover {
+  transform: scale(1.01);
+  box-shadow: 2px 2px 10px #0003;
+  transition: all ease-in-out;
+}
+
+.employee__card-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.employee__card-items {
+  margin: 8px;
+}
+
+.button__container {
+  width: 100vw;
+  padding-bottom: 3em;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+::-moz-selection {
+  color: #e85a5a;
+}
+
+::selection {
+  color: #e85a5a;
+}
+
+@media screen and (min-width: 768px) {
+  .login__container {
+    width: 44em;
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
