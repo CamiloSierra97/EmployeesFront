@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import getConfig from "../../utils/getConfig";
 // import { useSelector } from "react-redux";
@@ -7,14 +7,6 @@ import getConfig from "../../utils/getConfig";
 const EmployeeCard = ({ employee, setEmployees, setPagination }) => {
   // const [isAdmin, setIsAdmin] = useState(false);
   // const userInfo = useSelector((state) => state.user);
-
-  useEffect(() => {
-    // if (userInfo?.role == "admin") {
-    //   setIsAdmin(true);
-    // }
-    console.log(employee)
-
-  }, []);
 
   // const deleteEmployee = () => {
   //   const URL = `https://employees-service-hnlj.onrender.com/api/v1/employees/${employee?.id}`;
@@ -51,24 +43,21 @@ const EmployeeCard = ({ employee, setEmployees, setPagination }) => {
           <li className="employee__card-items">
             <p>Date of Hire</p> {employee?.DateOfHire}
           </li>
+          <li className="employee__card-items">{employee?.DocumentType}</li>
+          <li className="employee__card-items">{employee?.DocumentNumber}</li>
           <li className="employee__card-items">
-            {employee?.DocumentType}
-          </li>
-          <li className="employee__card-items">
-            {employee?.DocumentNumber}
-          </li>
-          <li className="employee__card-items">
-            <p>Gender:</p>
-            {employee?.gender ? employee.gender : "null"}
+            <p>Email:</p>
+            {employee?.Email ? employee.Email : "no data"}
           </li>
           <li className="employee__card-items">{employee?.Country}</li>
           <li className="employee__card-items">
-            <p>Adress:</p>
-            {employee?.address}
+            <p>Status</p>
+            Active
           </li>
           <li className="employee__card-items">
-            <p>Status</p>
-            {employee?.status}
+            <NavLink to="/create_employee">
+              <button>Edit Employee</button>
+            </NavLink>
           </li>
         </ul>
       </article>

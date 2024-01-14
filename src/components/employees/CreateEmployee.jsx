@@ -13,32 +13,27 @@ const CreateEmployee = () => {
 
   useEffect(() => {
     axios
-      .get(
-        "https://employees-service-hnlj.onrender.com/api/v1/areas",
-        getConfig()
-      )
-      .then((res) => setAreas(res.data))
+      .get("https://localhost:44330/api/Areas", getConfig())
+      .then((res) => {
+        setAreas(res.data.data);
+      })
       .catch((err) => console.log(err));
 
     axios
-      .get(
-        "https://employees-service-hnlj.onrender.com/api/v1/subareas",
-        getConfig()
-      )
+      .get("https://localhost:44330/api/Subareas", getConfig())
       .then(
-        (res) => setSubAreas(res.data),
-        setSubareaFilter(
-          subareas?.filter((element) =>
-            element.area.name.includes(selectedArea)
-          )
-        )
+        (res) => setSubAreas(res.data.data)
+        // setSubareaFilter(
+        //   subareas?.data.filter((element) =>
+        //     element.area.name.includes(selectedArea)
+        //   )
+        // )
       )
       .catch((err) => console.log(err));
   }, [selectedArea]);
 
   const submit = (data) => {
-    const URL =
-      "https://employees-service-hnlj.onrender.com/api/v1/employees/my_employees/";
+    const URL = "https://localhost:44330/api/Employees";
     axios
       .post(URL, data, getConfig())
       .then((res) => console.log(res))
@@ -90,7 +85,7 @@ const CreateEmployee = () => {
           </div>
           <div className="edit__div">
             <label className="login__label" htmlFor="birthday">
-              Birthday
+              Date Of Hire
             </label>
             <input
               {...register("birthday")}
@@ -100,14 +95,14 @@ const CreateEmployee = () => {
             />
           </div>
           <div className="edit__div">
-            <label className="login__label" htmlFor="gender">
-              Gender
+            <label className="login__label" htmlFor="Email">
+              Email
             </label>
             <input
-              {...register("gender")}
+              {...register("Email")}
               className="login__input"
               type="text"
-              id="gender"
+              id="email"
             />
           </div>
           <div className="edit__div">
@@ -138,8 +133,12 @@ const CreateEmployee = () => {
             </label>
             <select name="areas" id="areas" onChange={selectedOption}>
               {areas?.map((area) => (
-                <option value={area.id} key={area.id} {...register("areaId")}>
-                  {area.name}
+                <option
+                  value={area.AreaId}
+                  key={area.AreaId}
+                  {...register("areaId")}
+                >
+                  {area.AreaName}
                 </option>
               ))}
             </select>
@@ -151,42 +150,56 @@ const CreateEmployee = () => {
             <select name="subareas" id="subareas">
               {subareaFilter
                 ? subareaFilter?.map((subarea) => (
-                    <option value={subarea.name} key={subarea.id}>
-                      {subarea.name}
+                    <option
+                      value={subarea.SubareaName}
+                      key={subarea.Subareaid}
+                      {...register("AreaId")}
+                    >
+                      {subarea.SubareaName}
                     </option>
                   ))
                 : subareas?.map((subarea) => (
                     <option
-                      value={subarea.id}
-                      key={subarea.id}
-                      {...register("subareaId")}
+                      value={subarea.SubareaId}
+                      key={subarea.SubareaId}
+                      {...register("SubareaId")}
                     >
-                      {subarea.name}
+                      {subarea.SubareaName}
                     </option>
                   ))}
             </select>
           </div>
           <div className="edit__div">
-            <label className="login__label" htmlFor="identificationCardType">
-              Identification Card Type
+            <label className="login__label" htmlFor="DocumentType">
+              Document Type
             </label>
-            <input
-              {...register("identificationCardType")}
-              className="login__input"
-              type="text"
-              id="identificationCardType"
-            />
+            <select name="DocumenType" id="DocumenType">
+              <option value="text" {...register("DocumentType")}>
+                C.C
+              </option>
+              <option value="text" {...register("DocumentType")}>
+                C.E
+              </option>
+              <option value="text" {...register("DocumentType")}>
+                PEP
+              </option>
+              <option value="text" {...register("DocumentType")}>
+                Passport
+              </option>
+              <option value="text" {...register("DocumentType")}>
+                Drivers License
+              </option>
+            </select>
           </div>
           <div className="edit__div">
-            <label className="login__label" htmlFor="identificationCardNumber">
-              Identification Card Number
+            <label className="login__label" htmlFor="DocumentNumber">
+              Document Number
             </label>
             <input
-              {...register("identificationCardNumber")}
-              className="login__input"
-              type="number"
-              id="identificationCardNumber"
-            />
+              name="DocumentNumber"
+              id="DocumentNumber"
+              {...register("DocumentNumber")}
+            ></input>
           </div>
           <div
             className="edit__div"

@@ -18,7 +18,7 @@ const FormLogin = ({ setIsLogged }) => {
   };
 
   const submit = (data) => {
-    const URL = "https://employees-service-hnlj.onrender.com/api/v1/auth/login";
+    const URL = "https://localhost:44330/api/Login";
     axios
       .post(URL, data)
       .then((res) => {

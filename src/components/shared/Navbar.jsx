@@ -6,7 +6,7 @@ const Navbar = () => {
     <header className="header">
       <NavLink
         className={({ isActive }) => (isActive ? "link__active" : "link")}
-        to="/me"
+        to="/"
       >
         <div className="header__logo__container">
           <h1 className="header__logo">
@@ -19,15 +19,15 @@ const Navbar = () => {
           <li className="header__item">
             <NavLink
               className={({ isActive }) => (isActive ? "link__active" : "link")}
-              to="/"
+              to="/create_employee"
             >
-              <p className="header__item-text">Login</p>
+              <p className="header__item-text">New Entry</p>
             </NavLink>
           </li>
           <li className="header__item">
             <NavLink
               className={({ isActive }) => (isActive ? "link__active" : "link")}
-              to="/me"
+              to="/"
             >
               <p className="header__item-text">All employees</p>
             </NavLink>

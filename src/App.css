@@ -271,6 +271,7 @@ input[type="number"] {
   display: flex;
   justify-content: center;
   column-gap: 5%;
+  padding-bottom: 3%;
 }
 
 .edit__form {
@@ -333,6 +334,8 @@ input[type="number"] {
   border: 1px solid #ccc7;
   border-radius: 1em;
   margin-top: 3%;
+  width: fit-content;
+  width: --webkit-fill-available;
 }
 
 .employee__card-container:hover {

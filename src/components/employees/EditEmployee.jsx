@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import getConfig from "../../utils/getConfig";
 import Loader from "../loader/Loader";
 import EmployeeForm from "./EmployeeForm";
@@ -8,13 +7,12 @@ import EmployeeForm from "./EmployeeForm";
 const EditEmployee = () => {
   const [thisEmployee, setThisEmployee] = useState();
   const [isloading, setIsloading] = useState(false);
-  const parameter = useParams();
-  const URL = `https://employees-service-hnlj.onrender.com/api/v1/employees/${parameter.id}`;
+  const URL = `https://localhost:44330/api/Employees`;
 
   useEffect(() => {
     axios
       .get(URL, getConfig())
-      .then((res) => setThisEmployee(res.data))
+      .then((res) => setThisEmployee(res.data), console.log(res.data))
       .catch((err) => console.log(err));
   }, []);
 

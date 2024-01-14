@@ -38,7 +38,7 @@ const Employees = () => {
 
   useEffect(() => {
     axios
-      .get("https://localhost:44330/api/Employees/GetAllEmployees", getConfig())
+      .get("https://localhost:44330/api/Employees", getConfig())
       .then((res) => {
         setEmployees(res.data);
         //    setPagination(res.data);
@@ -46,7 +46,7 @@ const Employees = () => {
       .catch((err) => console.log(err));
 
     axios
-      .get("https://localhost:44330/api/Employees/GetAllEmployees", getConfig())
+      .get("https://localhost:44330/api/Employees", getConfig())
       .then((res) => setAllEmployees(res.data))
       .catch((err) => console.log(err));
   }, []);
