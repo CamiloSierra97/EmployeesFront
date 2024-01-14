@@ -2,31 +2,9 @@ import axios from "axios";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import getConfig from "../../utils/getConfig";
-// import { useSelector } from "react-redux";
 
-const EmployeeCard = ({ employee, setEmployees, setPagination }) => {
-  // const [isAdmin, setIsAdmin] = useState(false);
-  // const userInfo = useSelector((state) => state.user);
+const EmployeeCard = ({ employee }) => {
 
-  // const deleteEmployee = () => {
-  //   const URL = `https://employees-service-hnlj.onrender.com/api/v1/employees/${employee?.id}`;
-  //   axios
-  //     .delete(URL, getConfig())
-  //     .then(
-  //       (res) => console.log(res),
-  //       axios
-  //         .get(
-  //           "https://employees-service-hnlj.onrender.com/api/v1/employees",
-  //           getConfig()
-  //         )
-  //         .then((res) => {
-  //           setEmployees(res.data.results);
-  //           setPagination(res.data);
-  //         })
-  //         .catch((err) => console.log(err))
-  //     )
-  //     .catch((err) => console.log(err));
-  // };
 
   return (
     <div className="employee__card-container">
@@ -61,16 +39,6 @@ const EmployeeCard = ({ employee, setEmployees, setPagination }) => {
           </li>
         </ul>
       </article>
-      {/* <NavLink to={`/employees/${employee.id}`}>
-        <button>Update</button>
-      </NavLink>
-      {isAdmin ? (
-        <NavLink>
-          <button onClick={deleteEmployee}>Delete</button>
-        </NavLink>
-      ) : (
-        <></>
-      )} */}
     </div>
   );
 };
