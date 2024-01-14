@@ -1,10 +1,22 @@
 import axios from "axios";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import getConfig from "../../utils/getConfig";
 
 const EmployeeCard = ({ employee }) => {
+  const navigate = useNavigate();
 
+  const handleClick = () => {
+    navigate("/create_employee", { state: { employeeData: employee } });
+  };
+
+  const handleDelete = () => {
+    axios
+      .patch("https://localhost:44330/api/Employees", {"EmployeeId": ""}, getConfig())
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+    navigate("/", { state: { employeeData: employee } });
+  };
 
   return (
     <div className="employee__card-container">
@@ -33,9 +45,10 @@ const EmployeeCard = ({ employee }) => {
             Active
           </li>
           <li className="employee__card-items">
-            <NavLink to="/create_employee">
-              <button>Edit Employee</button>
-            </NavLink>
+            <button onClick={handleClick}>Edit Employee</button>
+          </li>
+          <li className="employee__card-items">
+            <button onClick={handleDelete}>Delete Employee</button>
           </li>
         </ul>
       </article>

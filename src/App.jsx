@@ -1,9 +1,8 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/shared/Navbar";
-import EditEmployee from "./components/employees/EditEmployee";
-import CreateEmployee from "./components/employees/CreateEmployee";
 import Employees from "./components/routes/Employees";
+import EmployeeForm from "./components/employees/EmployeeForm";
 
 function App() {
   return (
@@ -11,8 +10,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Employees />} />
-        <Route path="/employees/:id" element={<EditEmployee />} />
-        <Route path="/create_employee" element={<CreateEmployee />} />
+        <Route path="/create_employee" element={<EmployeeForm />} />
       </Routes>
     </div>
   );
