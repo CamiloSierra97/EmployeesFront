@@ -1,21 +1,14 @@
 import axios from "axios";
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import getConfig from "../../utils/getConfig";
-import { useLocation, useNavigate } from "react-router-dom";
 
-const CreateEmployee = () => {
-  const navigate = useNavigate();
+const EmployeeCreateForm = () => {
   const { handleSubmit, register, reset } = useForm();
   const [countries, setCountries] = useState();
   const [areas, setAreas] = useState();
   const [subareas, setSubAreas] = useState();
   const [selectedArea, setSelectedArea] = useState();
-
-  const {
-    state: { employeeData },
-  } = useLocation();
 
   useEffect(() => {
     axios
@@ -37,13 +30,12 @@ const CreateEmployee = () => {
   }, []);
 
   const submit = (data) => {
-    console.log(data);
+    const submit = { ...data, SubAreaId: parseInt(selectedArea) };
     const URL = "https://localhost:44330/api/Employees";
     axios
-      .put(URL, data, getConfig())
+      .post(URL, submit, getConfig())
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
-    //    navigate("/");
     reset({});
   };
 
@@ -55,21 +47,6 @@ const CreateEmployee = () => {
     <div className="edit__container">
       <article className="edit__article">
         <form onSubmit={handleSubmit(submit)} className="edit__form">
-          <div className="edit__div" style={{ display: "none" }}>
-            <label className="login__label" htmlFor="EmployeeId">
-              Employee Id
-            </label>
-            <input
-              {...register("EmployeeId", {
-                setValueAs: (value) => parseInt(value),
-              })}
-              className="login__input"
-              type="text"
-              id="EmployeeId"
-              defaultValue={employeeData?.EmployeeId}
-            />
-          </div>
-
           <div className="edit__div">
             <label className="login__label" htmlFor="FirstName">
               First Name
@@ -79,7 +56,6 @@ const CreateEmployee = () => {
               className="login__input"
               type="text"
               id="FirstName"
-              defaultValue={employeeData?.FirstName}
             />
           </div>
           <div className="edit__div">
@@ -91,7 +67,6 @@ const CreateEmployee = () => {
               className="login__input"
               type="text"
               id="Surname"
-              defaultValue={employeeData?.Surname}
             />
           </div>
           <div className="edit__div">
@@ -105,7 +80,6 @@ const CreateEmployee = () => {
               className="login__input"
               type="text"
               id="Phone"
-              defaultValue={employeeData?.Phone}
             />
           </div>
           <div className="edit__div">
@@ -117,7 +91,6 @@ const CreateEmployee = () => {
               className="login__input"
               type="text"
               id="DateOfHire"
-              defaultValue={employeeData?.DateOfHire}
             />
           </div>
           <div className="edit__div">
@@ -129,7 +102,6 @@ const CreateEmployee = () => {
               className="login__input"
               type="text"
               id="Email"
-              defaultValue={employeeData?.Email}
             />
           </div>
           <div className="edit__div">
@@ -201,20 +173,18 @@ const CreateEmployee = () => {
               Document Number
             </label>
             <input
+              name="DocumentNumber"
+              id="DocumentNumber"
               {...register("DocumentNumber", {
                 setValueAs: (value) => parseInt(value),
               })}
-              className="login__input"
-              type="text"
-              id="DocumentNumber"
-              defaultValue={employeeData?.DocumentNumber}
-            />
+            ></input>
           </div>
           <div
             className="edit__div"
             style={{ display: "flex", justifyContent: "center" }}
           >
-            <button style={{ width: "8em" }}>Update</button>
+            <button style={{ width: "8em" }}>Create</button>
           </div>
         </form>
       </article>
@@ -222,4 +192,4 @@ const CreateEmployee = () => {
   );
 };
 
-export default CreateEmployee;
+export default EmployeeCreateForm;

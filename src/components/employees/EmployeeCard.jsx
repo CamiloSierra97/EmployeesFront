@@ -6,15 +6,21 @@ import getConfig from "../../utils/getConfig";
 const EmployeeCard = ({ employee }) => {
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate("/create_employee", { state: { employeeData: employee } });
+  const handleEdit = () => {
+    navigate("/edit_employee", { state: { employeeData: employee } });
   };
+
 
   const handleDelete = () => {
     axios
-      .patch("https://localhost:44330/api/Employees", {"EmployeeId": ""}, getConfig())
+      .patch(
+        "https://localhost:44330/api/Employees",
+        { EmployeeId: employee.EmployeeId },
+        getConfig()
+      )
       .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(location.reload());
     navigate("/", { state: { employeeData: employee } });
   };
 
@@ -45,7 +51,7 @@ const EmployeeCard = ({ employee }) => {
             Active
           </li>
           <li className="employee__card-items">
-            <button onClick={handleClick}>Edit Employee</button>
+            <button onClick={handleEdit}>Edit Employee</button>
           </li>
           <li className="employee__card-items">
             <button onClick={handleDelete}>Delete Employee</button>
