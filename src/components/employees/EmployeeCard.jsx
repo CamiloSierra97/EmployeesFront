@@ -10,7 +10,6 @@ const EmployeeCard = ({ employee }) => {
     navigate("/edit_employee", { state: { employeeData: employee } });
   };
 
-
   const handleDelete = () => {
     axios
       .patch(
@@ -19,9 +18,7 @@ const EmployeeCard = ({ employee }) => {
         getConfig()
       )
       .then((res) => console.log(res.data))
-      .catch((err) => console.log(err))
-      .finally(location.reload());
-    navigate("/", { state: { employeeData: employee } });
+      .catch((err) => console.log(err));
   };
 
   return (

@@ -2,13 +2,16 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import getConfig from "../../utils/getConfig";
+import { useNavigate } from "react-router-dom";
 
 const EmployeeCreateForm = () => {
+  const navigate = useNavigate();
   const { handleSubmit, register, reset } = useForm();
   const [countries, setCountries] = useState();
   const [areas, setAreas] = useState();
   const [subareas, setSubAreas] = useState();
   const [selectedArea, setSelectedArea] = useState();
+  const [selectedCountry, setSelectedCountry] = useState();
 
   useEffect(() => {
     axios
@@ -30,17 +33,27 @@ const EmployeeCreateForm = () => {
   }, []);
 
   const submit = (data) => {
-    const submit = { ...data, SubAreaId: parseInt(selectedArea) };
+    const submit = {
+      ...data,
+      CountryId: parseInt(selectedCountry),
+      SubAreaId: parseInt(selectedArea),
+    };
     const URL = "https://localhost:44330/api/Employees";
+    console.log(submit);
     axios
       .post(URL, submit, getConfig())
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
+    navigate("/");
     reset({});
   };
 
   const selectedAreaFn = () => {
     setSelectedArea(document.getElementById("Areas").value);
+  };
+
+  const selectedCountryFn = () => {
+    setSelectedCountry(document.getElementById("Country").value);
   };
 
   return (
@@ -108,15 +121,9 @@ const EmployeeCreateForm = () => {
             <label className="login__label" htmlFor="Country">
               Country
             </label>
-            <select name="countries" id="Country">
+            <select name="countries" id="Country" onChange={selectedCountryFn}>
               {countries?.map((country) => (
-                <option
-                  value={country.CountryId}
-                  key={country.CountryId}
-                  {...register("CountryId", {
-                    setValueAs: (value) => parseInt(value),
-                  })}
-                >
+                <option value={country.CountryId} key={country.CountryId}>
                   {country.CountryName}
                 </option>
               ))}

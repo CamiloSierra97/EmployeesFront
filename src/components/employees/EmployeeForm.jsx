@@ -43,7 +43,7 @@ const CreateEmployee = () => {
       .put(URL, data, getConfig())
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
-    //    navigate("/");
+    navigate("/");
     reset({});
   };
 
@@ -174,7 +174,13 @@ const CreateEmployee = () => {
               {subareas
                 ?.filter((subarea) => subarea.AreaId == selectedArea)
                 .map((subarea) => (
-                  <option value={subarea.AreaId} key={subarea.SubareaId}>
+                  <option
+                    value={subarea.AreaId}
+                    key={subarea.SubareaId}
+                    {...register("SubareaId", {
+                      setValueAs: (value) => parseInt(value),
+                    })}
+                  >
                     {subarea.SubareaName}
                   </option>
                 ))}
